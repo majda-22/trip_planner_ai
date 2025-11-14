@@ -1,6 +1,6 @@
 from crewai import Agent
 from langchain_community.llms import Ollama
-from tools.search_tools import SearchTools
+from tools.search_tools import SearchInternetTool, SearchWeatherTool, SearchFlightsTool, SearchAttractionsTool
 from tools.calculator_tools import CalculatorTools
 from tools.browser_tools import BrowserTools
 import yaml
@@ -39,7 +39,10 @@ class TripAgents:
         print(f"✅ LLM initialisé: Ollama avec {model_name}")
         
         # Initialiser les outils
-        self.search_tools = SearchTools()
+        self.search_internet_tool = SearchInternetTool()
+        self.search_weather_tool = SearchWeatherTool()
+        self.search_flights_tool = SearchFlightsTool()
+        self.search_attractions_tool = SearchAttractionsTool()
         self.calculator_tools = CalculatorTools()
         self.browser_tools = BrowserTools()
     
@@ -57,9 +60,9 @@ class TripAgents:
             ),
             backstory=config['backstory'],
             tools=[
-                self.search_tools.search_internet,
-                self.search_tools.search_weather,
-                self.search_tools.search_flights,
+                self.search_internet_tool,
+                self.search_weather_tool,
+                self.search_flights_tool,
                 self.calculator_tools.calculate_budget
             ],
             llm=self.llm,
@@ -80,8 +83,8 @@ class TripAgents:
             ),
             backstory=config['backstory'].format(city=city),
             tools=[
-                self.search_tools.search_internet,
-                self.search_tools.search_attractions,
+                self.search_internet_tool,
+                self.search_attractions_tool,
                 self.browser_tools.scrape_website
             ],
             llm=self.llm,
@@ -103,7 +106,7 @@ class TripAgents:
             ),
             backstory=config['backstory'],
             tools=[
-                self.search_tools.search_internet,
+                self.search_internet_tool,
                 self.calculator_tools.calculate_budget,
                 self.calculator_tools.calculate_daily_budget,
                 self.calculator_tools.convert_currency
