@@ -1,0 +1,93 @@
+city_selection_task:
+  description: >
+    Analyze the following destinations: {cities}
+    
+    For each city, research:
+    1. Weather forecasts for {date_range}
+    2. Special events and festivals during this period
+    3. Estimated flight prices from {origin}
+    4. Average cost of living (accommodation, food, transport)
+    5. Expected tourist crowd levels
+    
+    Take into account the traveler’s interests: {interests}
+    
+    Provide a clear recommendation with justification.
+  expected_output: >
+    A detailed report comparing the 3 cities with:
+    - Weather conditions per city
+    - Major events
+    - Estimated costs (flights + stay)
+    - Crowd level
+    - Final recommendation with justification
+    - Relevance score for each city (0–10)
+
+local_insights_task:
+  description: >
+    Create a complete local guide for {city}, taking into account
+    the following interests: {interests}
+    
+    Include:
+    1. Top 10 attractions (mix of popular and hidden gems)
+    2. Best neighborhoods to explore
+    3. Recommended restaurants (varied budget)
+    4. Cultural tips and local customs
+    5. Special events during {date_range}
+    6. Safety advice
+    7. Useful phrases in the local language
+    8. Local transportation (metro, bus, bike)
+  expected_output: >
+    A detailed local guide with:
+    - List of attractions with descriptions
+    - Restaurant recommendations (budget, mid-range, high-end)
+    - Map-style overview of neighborhoods to visit
+    - Practical and cultural advice
+    - Information on local transportation
+
+itinerary_planning_task:
+  description: >
+    Create a detailed {duration}-day itinerary for {city}
+    with a budget of {budget}
+    
+    For each day, plan:
+    1. Morning activities (9:00–13:00)
+    2. Lunch (restaurant suggestion)
+    3. Afternoon activities (14:00–18:00)
+    4. Dinner (restaurant suggestion)
+    5. Optional evening activities
+    
+    Include:
+    - Recommended accommodation with price
+    - Transport between locations
+    - Detailed costs per category
+    - Clothing advice based on weather
+    - Travel times between locations
+  expected_output: >
+    A complete itinerary with:
+    - Day-by-day schedule (detailed times)
+    - Detailed daily budget by category
+    - Accommodation suggestions with prices
+    - Restaurant recommendations for each meal
+    - Transport and logistics
+    - Total budget with breakdown
+
+report_generation_task:
+  description: >
+    Compile all outputs into a final professional travel report
+    in Markdown format.
+    
+    The report must include:
+    1. Cover page with title and dates
+    2. Executive summary
+    3. Destination analysis
+    4. Detailed local guide
+    5. Day-by-day itinerary
+    6. Full budget
+    7. Preparation checklist
+    8. Practical information
+  expected_output: >
+    A complete, well-formatted Markdown file containing:
+    - All required sections
+    - Tables for budgets
+    - Bullet lists for tips
+    - Emojis for improved readability
+    - Formatting suitable for printing or mobile viewing
